@@ -87,14 +87,14 @@ public class SudokuBoard {
 
    private boolean isValidC() {
       for (int c = 0; c< 9; c++) {
-         Set<String> store2 = new HashSet<String>();
+         Set<String> store3 = new HashSet<String>();
          for (int r = 0; r < 9; r++) {
             String strVal = board[r][c];
             if (!strVal.equals(".")) {
-               if (store2.contains(strVal)) {
+               if (store3.contains(strVal)) {
                   return false;
                } else {
-                  store2.add(strVal);
+                  store3.add(strVal);
             }
          }
       }
