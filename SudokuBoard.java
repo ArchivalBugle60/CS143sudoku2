@@ -68,4 +68,21 @@ public class SudokuBoard {
       
    }
 
+      private boolean isValidRow() {
+      for (int r = 0; r< 9; r++) {
+         Set<String> store2 = new HashSet<String>();
+         for (int c = 0; c < 9; c++) {
+            String strVal = board[r][c];
+            if (!strVal.equals(".")) {
+               if (store2.contains(strVal)) {
+                  return false;
+               } else {
+                  store2.add(strVal);
+            }
+         }
+      }
+   }
+   return true;
+}
+
 }
