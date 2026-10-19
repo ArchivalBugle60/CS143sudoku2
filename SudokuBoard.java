@@ -101,4 +101,37 @@ public class SudokuBoard {
    }
    return true;
 } 
+
+private String[][] miniSquare(int spot) {
+      String[][] mini = new String[3][3];
+      for(int r = 0; r < 3; r++) {
+         for(int c = 0; c < 3; c++) {
+            mini[r][c] = board[(spot - 1) / 3 * 3 + r][(spot - 1) % 3 * 3 + c];
+         }
+      }
+      return mini;
+   }
+   private boolean isValidMS() {
+      for (int spot = 1; spot<= 9; spot++) {
+         Set<String> store4 = new HashSet<>();
+         String[][] minVal = miniSquare(spot);
+         
+         for (int r=0; r < 3; r++) {
+            
+            for (int c= 0; c< 3; c++) {
+               String strVal = minVal[r][c];
+               if (!strVal.equals(".")) {
+                  if (store4.contains(strVal)) {
+                     return false;
+                  } else {
+                     store4.add(strVal);
+            }
+            }
+         }
+         
+      }
+      
+   }
+   return true;
+}
 }
