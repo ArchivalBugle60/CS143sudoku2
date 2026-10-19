@@ -20,6 +20,7 @@ public class SudokuBoard {
       }
    }
    
+      
    public String toString() {
       String output = "";
       for (int r = 0; r < 9; r++) {
@@ -42,7 +43,10 @@ public class SudokuBoard {
     output += "  ---------------------\n";
     return output;
    }
-
+   public boolean isValid() {
+      return isValidData() && isValidRow() && isValidC() && isValidMS();
+   }
+   
    private boolean isValidData() {
       ArrayList<String> store = new ArrayList<>();
       store.add(".");
@@ -67,8 +71,8 @@ public class SudokuBoard {
       return true;
       
    }
-
-      private boolean isValidRow() {
+   
+   private boolean isValidRow() {
       for (int r = 0; r< 9; r++) {
          Set<String> store2 = new HashSet<String>();
          for (int c = 0; c < 9; c++) {
@@ -100,9 +104,9 @@ public class SudokuBoard {
       }
    }
    return true;
-} 
+}   
 
-private String[][] miniSquare(int spot) {
+      private String[][] miniSquare(int spot) {
       String[][] mini = new String[3][3];
       for(int r = 0; r < 3; r++) {
          for(int c = 0; c < 3; c++) {
@@ -134,4 +138,27 @@ private String[][] miniSquare(int spot) {
    }
    return true;
 }
+
+   public boolean isSolved() {
+      Map<String,Integer> counter = new HashMap<>();
+      for (int i = 1; i <= 9; i++) {
+         counter.put(""+i, 0);
+      }
+      for (int r = 0; r < 9; r++) {
+         for (int c = 0; c< 9; c++) {
+            String strVal = board[r][c];
+            if (counter.containsKey(strVal)) {
+               int counts = counter.get(strVal);
+               counts++;
+               counter.put(strVal,counts);
+            }
+         }
+      }
+      
+      return true;
+      
+    
+   }
 }
+
+
