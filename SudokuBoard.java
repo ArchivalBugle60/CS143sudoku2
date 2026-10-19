@@ -42,4 +42,30 @@ public class SudokuBoard {
     output += "  ---------------------\n";
     return output;
    }
+
+   private boolean isValidData() {
+      ArrayList<String> store = new ArrayList<>();
+      store.add(".");
+      store.add("1");
+      store.add("2");
+      store.add("3");
+      store.add("4");
+      store.add("5");
+      store.add("6");
+      store.add("7");
+      store.add("8");
+      store.add("9");
+      for (int r = 0; r < 9; r++) {
+         for (int c = 0; c < 9; c++) {
+             String strVal = board[r][c];
+            
+            if (!store.contains(strVal)) {
+               return false;
+            }
+         }
+      }
+      return true;
+      
+   }
+
 }
