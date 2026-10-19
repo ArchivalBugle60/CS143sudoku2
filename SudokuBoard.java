@@ -44,7 +44,19 @@ public class SudokuBoard {
     return output;
    }
    public boolean isValid() {
-      return isValidData() && isValidRow() && isValidC() && isValidMS();
+      if (!isValidData()) {
+         return false;
+      }
+      if (!isValidRow()) {
+         return false;
+      }
+      if (!isValidC()) {
+         return false;
+      }
+      if (!isValidMS()) {
+         return false;
+      }
+      return true;
    }
    
    private boolean isValidData() {
